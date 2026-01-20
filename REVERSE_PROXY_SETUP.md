@@ -28,21 +28,21 @@ sudo nano /etc/nginx/sites-available/api.thamquannhan.io.vn
 Nội dung file:
 
 ```nginx
-# HTTP server - forward đến Docker container port 8080
+# HTTP server - forward đến Docker container port 8000
 server {
     listen 80;
     server_name api.thamquannhan.io.vn;
 
     # Allow Let's Encrypt verification
     location /.well-known/acme-challenge/ {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
 
     # Forward tất cả request khác đến Docker container
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -115,12 +115,12 @@ Nội dung file:
     
     # Allow Let's Encrypt verification
     ProxyPreserveHost On
-    ProxyPass /.well-known/acme-challenge/ http://127.0.0.1:8080/.well-known/acme-challenge/
-    ProxyPassReverse /.well-known/acme-challenge/ http://127.0.0.1:8080/.well-known/acme-challenge/
+    ProxyPass /.well-known/acme-challenge/ http://127.0.0.1:8000/.well-known/acme-challenge/
+    ProxyPassReverse /.well-known/acme-challenge/ http://127.0.0.1:8000/.well-known/acme-challenge/
     
     # Forward tất cả request khác
-    ProxyPass / http://127.0.0.1:8080/
-    ProxyPassReverse / http://127.0.0.1:8080/
+    ProxyPass / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
     
     # Headers
     ProxyPreserveHost On
@@ -160,8 +160,8 @@ sudo systemctl reload apache2
 Nếu bạn chỉ muốn forward port đơn giản:
 
 ```bash
-# Forward port 80 -> 8080
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+# Forward port 80 -> 8000
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8000
 
 # Forward port 443 -> 8443
 sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8443
@@ -214,7 +214,7 @@ Sau khi cấu hình reverse proxy:
 
 ### Lỗi: "502 Bad Gateway"
 - Kiểm tra Docker container đang chạy: `docker ps`
-- Kiểm tra port 8080/8443 có thể truy cập: `curl http://127.0.0.1:8080`
+- Kiểm tra port 8000/8443 có thể truy cập: `curl http://127.0.0.1:8000`
 
 ### Lỗi: "Connection refused"
 - Kiểm tra firewall: `sudo ufw status`

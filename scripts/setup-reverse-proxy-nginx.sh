@@ -33,7 +33,7 @@ server {
 
     # Allow Let's Encrypt verification
     location /.well-known/acme-challenge/ {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -41,7 +41,7 @@ server {
 
     # Forward tất cả request khác đến Docker container
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -75,7 +75,7 @@ if nginx -t; then
     echo ""
     echo "=== Hoàn tất! ==="
     echo "Reverse proxy đã được cấu hình thành công"
-    echo "Port 80 sẽ forward đến Docker container port 8080"
+    echo "Port 80 sẽ forward đến Docker container port 8000"
     echo ""
     echo "Kiểm tra:"
     echo "  curl -I http://$DOMAIN/api/health"

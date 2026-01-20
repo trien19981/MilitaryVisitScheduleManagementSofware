@@ -19,9 +19,9 @@ fi
 
 echo "=== Cấu hình SSL cho domain: $DOMAIN ==="
 echo ""
-echo "⚠ QUAN TRỌNG: Docker container đang sử dụng port 8080 (HTTP) và 8443 (HTTPS)"
+echo "⚠ QUAN TRỌNG: Docker container đang sử dụng port 8000 (HTTP) và 8443 (HTTPS)"
 echo "Let's Encrypt cần truy cập domain qua port 80 để verify."
-echo "Bạn cần cấu hình reverse proxy trên host để forward port 80 -> 8080"
+echo "Bạn cần cấu hình reverse proxy trên host để forward port 80 -> 8000"
 echo "Xem file REVERSE_PROXY_SETUP.md để biết cách cấu hình"
 echo ""
 read -p "Bạn đã cấu hình reverse proxy chưa? (y/n): " -n 1 -r
