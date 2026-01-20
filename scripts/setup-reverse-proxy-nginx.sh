@@ -26,7 +26,7 @@ fi
 # Tạo cấu hình Nginx
 echo "Tạo cấu hình Nginx..."
 cat > "$CONFIG_FILE" << EOF
-# HTTP server - forward đến Docker container port 8080
+# HTTP server - forward đến Docker container port 8000
 server {
     listen 80;
     server_name $DOMAIN;
