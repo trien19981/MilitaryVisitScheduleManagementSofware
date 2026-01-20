@@ -24,6 +24,10 @@ $allowedOrigins = [
     'http://localhost:3000',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:3000',
+    'https://api.thamquannhan.io.vn',
+    'http://api.thamquannhan.io.vn',
+    'https://thamquannhan.io.vn',
+    'http://thamquannhan.io.vn',
 ];
 
 if (in_array($origin, $allowedOrigins)) {
