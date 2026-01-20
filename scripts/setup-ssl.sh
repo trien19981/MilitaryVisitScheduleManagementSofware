@@ -18,6 +18,20 @@ else
 fi
 
 echo "=== Cấu hình SSL cho domain: $DOMAIN ==="
+echo ""
+echo "⚠ QUAN TRỌNG: Docker container đang sử dụng port 8080 (HTTP) và 8443 (HTTPS)"
+echo "Let's Encrypt cần truy cập domain qua port 80 để verify."
+echo "Bạn cần cấu hình reverse proxy trên host để forward port 80 -> 8080"
+echo "Xem file REVERSE_PROXY_SETUP.md để biết cách cấu hình"
+echo ""
+read -p "Bạn đã cấu hình reverse proxy chưa? (y/n): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Vui lòng cấu hình reverse proxy trước khi tiếp tục!"
+    echo "Xem hướng dẫn trong file REVERSE_PROXY_SETUP.md"
+    exit 1
+fi
+echo ""
 
 # Tạo thư mục cần thiết
 echo "Tạo thư mục cho SSL certificates..."

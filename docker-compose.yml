@@ -25,8 +25,8 @@ services:
     container_name: schedule-be-nginx
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"   # HTTP port - đã đổi từ 80 sang 8080
+      - "8443:443"  # HTTPS port - đã đổi từ 443 sang 8443
     volumes:
       - ./:/var/www/html
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
