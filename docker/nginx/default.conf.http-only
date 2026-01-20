@@ -8,11 +8,9 @@ server {
 
     index index.php;
 
-    # Allow Let's Encrypt verification - QUAN TRỌNG: phải đặt trước location /
+    # Allow Let's Encrypt verification
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
-        try_files $uri =404;
-        access_log off;
     }
 
     location / {
