@@ -26,8 +26,8 @@ $allowedOrigins = [
     'http://127.0.0.1:3000',
     'https://api.thamhoi.io.vn',
     'http://api.thamhoi.io.vn',
-    'https://thamhoi.io.vn',
-    'http://thamhoi.io.vn',
+    'https://thamquannhan.io.vn',
+    'http://thamquannhan.io.vn',
 ];
 
 if (in_array($origin, $allowedOrigins)) {

@@ -30,8 +30,8 @@ sudo ./scripts/setup-reverse-proxy-nginx.sh
 sudo systemctl status nginx
 
 # Kiểm tra cấu hình có tồn tại không
-ls -la /etc/nginx/sites-available/api.thamquannhan.io.vn
-ls -la /etc/nginx/sites-enabled/api.thamquannhan.io.vn
+ls -la /etc/nginx/sites-available/api.thamhoi.io.vn
+ls -la /etc/nginx/sites-enabled/api.thamhoi.io.vn
 ```
 
 Nếu chưa có, chạy script ở trên.
@@ -43,10 +43,10 @@ Nếu chưa có, chạy script ở trên.
 curl http://127.0.0.1:8000/api/health
 
 # Test qua reverse proxy (port 80)
-curl -H "Host: api.thamquannhan.io.vn" http://127.0.0.1/api/health
+curl -H "Host: api.thamhoi.io.vn" http://127.0.0.1/api/health
 
 # Test từ domain bên ngoài
-curl http://api.thamquannhan.io.vn/api/health
+curl http://api.thamhoi.io.vn/api/health
 ```
 
 Nếu tất cả đều trả về kết quả, reverse proxy đã hoạt động đúng.
@@ -142,7 +142,7 @@ Khi script hỏi "Bạn đã cấu hình reverse proxy chưa?", nhấn **y** n�
 **Giải pháp:**
 ```bash
 # Kiểm tra DNS
-dig +short api.thamquannhan.io.vn
+dig +short api.thamhoi.io.vn
 
 # Phải trả về IP server của bạn (ví dụ: 103.159.51.241)
 ```
@@ -151,9 +151,9 @@ dig +short api.thamquannhan.io.vn
 
 1. ✅ Docker containers đang chạy: `docker ps`
 2. ✅ Port 8000 có thể truy cập: `curl http://127.0.0.1:8000/api/health`
-3. ✅ Reverse proxy đã cấu hình: `ls /etc/nginx/sites-enabled/api.thamquannhan.io.vn`
+3. ✅ Reverse proxy đã cấu hình: `ls /etc/nginx/sites-enabled/api.thamhoi.io.vn`
 4. ✅ Nginx trên host đang chạy: `sudo systemctl status nginx`
-5. ✅ Domain có thể truy cập: `curl http://api.thamquannhan.io.vn/api/health`
+5. ✅ Domain có thể truy cập: `curl http://api.thamhoi.io.vn/api/health`
 6. ✅ Port 80 đã mở: `sudo ufw status | grep 80`
 
 Sau khi tất cả các bước trên đều OK, bạn có thể chạy `setup-ssl.sh` thành công!

@@ -2,7 +2,7 @@
 
 # Script kiểm tra DNS configuration
 
-DOMAIN="api.thamquannhan.io.vn"
+DOMAIN="api.thamhoi.io.vn"
 
 echo "=== Kiểm tra DNS cho domain: $DOMAIN ==="
 echo ""
@@ -36,7 +36,7 @@ else
     echo ""
     echo "Vui lòng cấu hình DNS A record:"
     echo "  Type: A"
-    echo "  Name: api.thamquannhan.io.vn"
+    echo "  Name: api.thamhoi.io.vn"
     echo "  Value: $SERVER_IP"
     echo "  TTL: 300 (hoặc mặc định)"
 fi
@@ -56,10 +56,10 @@ fi
 echo ""
 echo "=== Hướng dẫn cấu hình DNS ==="
 echo ""
-echo "1. Đăng nhập vào quản lý DNS của domain thamquannhan.io.vn"
+echo "1. Đăng nhập vào quản lý DNS của domain thamhoi.io.vn"
 echo "2. Tạo A record mới:"
 echo "   - Type: A"
-echo "   - Name: api (hoặc api.thamquannhan.io.vn)"
+echo "   - Name: api (hoặc api.thamhoi.io.vn)"
 echo "   - Value: $SERVER_IP"
 echo "   - TTL: 300"
 echo ""

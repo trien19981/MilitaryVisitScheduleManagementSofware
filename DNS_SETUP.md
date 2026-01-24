@@ -1,8 +1,8 @@
-# Hướng dẫn cấu hình DNS cho api.thamquannhan.io.vn
+# Hướng dẫn cấu hình DNS cho api.thamhoi.io.vn
 
 ## Vấn đề hiện tại
 
-Domain `api.thamquannhan.io.vn` chưa được cấu hình DNS, nên không thể resolve được.
+Domain `api.thamhoi.io.vn` chưa được cấu hình DNS, nên không thể resolve được.
 
 ## Các bước cấu hình DNS
 
@@ -23,7 +23,7 @@ Hoặc chạy script kiểm tra:
 
 ### Bước 2: Đăng nhập quản lý DNS
 
-Đăng nhập vào nhà cung cấp DNS của domain `thamquannhan.io.vn`. Có thể là:
+Đăng nhập vào nhà cung cấp DNS của domain `thamhoi.io.vn`. Có thể là:
 - Cloudflare
 - Namecheap
 - GoDaddy
@@ -34,7 +34,7 @@ Hoặc chạy script kiểm tra:
 Tạo một A record mới với thông tin sau:
 
 - **Type**: `A`
-- **Name**: `api` (hoặc `api.thamquannhan.io.vn` tùy nhà cung cấp)
+- **Name**: `api` (hoặc `api.thamhoi.io.vn` tùy nhà cung cấp)
 - **Value/IP**: IP server của bạn (ví dụ: `103.159.51.241`)
 - **TTL**: `300` (5 phút) hoặc mặc định
 - **Proxy**: `OFF` (tắt proxy nếu dùng Cloudflare, để Let's Encrypt có thể verify)
@@ -45,13 +45,13 @@ Sau khi tạo DNS record, đợi 5-30 phút để DNS propagate.
 
 Kiểm tra DNS:
 ```bash
-dig +short api.thamquannhan.io.vn
+dig +short api.thamhoi.io.vn
 # Phải trả về IP server của bạn
 ```
 
 Hoặc:
 ```bash
-nslookup api.thamquannhan.io.vn
+nslookup api.thamhoi.io.vn
 ```
 
 ### Bước 5: Kiểm tra từ bên ngoài
@@ -59,7 +59,7 @@ nslookup api.thamquannhan.io.vn
 Sau khi DNS đã propagate, test từ server:
 
 ```bash
-curl http://api.thamquannhan.io.vn/api/health
+curl http://api.thamhoi.io.vn/api/health
 ```
 
 Nếu trả về kết quả (200 hoặc 401), DNS đã hoạt động.
@@ -93,15 +93,15 @@ Script sẽ:
 
 1. Kiểm tra record đã được tạo chưa:
    ```bash
-   dig api.thamquannhan.io.vn
+   dig api.thamhoi.io.vn
    ```
 
 2. Kiểm tra TTL và đợi propagate
 
 3. Kiểm tra từ nhiều DNS server:
    ```bash
-   dig @8.8.8.8 api.thamquannhan.io.vn
-   dig @1.1.1.1 api.thamquannhan.io.vn
+   dig @8.8.8.8 api.thamhoi.io.vn
+   dig @1.1.1.1 api.thamhoi.io.vn
    ```
 
 ### DNS đã đúng nhưng vẫn không truy cập được
